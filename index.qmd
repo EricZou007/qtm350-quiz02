@@ -1,0 +1,36 @@
+---
+title: "Gapminder Data Analysis"
+format:
+  html:
+    theme: cosmo  
+---
+
+# Welcome to the Gapminder Data Analysis Website
+
+The **Gapminder dataset** contains global economic and health indicators over time, including **life expectancy, population, and GDP per capita** for various countries and continents from 1952 to 2007.
+
+## Navigation
+
+- [Life V.S GDP](life-gdp.qmd)
+- [Life V.S Population](life-population.qmd)
+- [Country](country.qmd)
+
+## About the Data
+
+The dataset has been modified to:
+- Rename `lifeExp` to **life_expectancy** and `gdpPercap` to **gdp_per_capita**.
+- Convert population values to **millions** for better readability.
+- Store the processed data in `gapminder.csv`.
+
+Below is a preview of the first three rows of the dataset:
+
+```{python}
+import pandas as pd
+
+# Load the modified dataset
+gapminder_df = pd.read_csv("gapminder.csv")
+
+# Display the first three rows
+print(gapminder_df.head(3))
+```
+

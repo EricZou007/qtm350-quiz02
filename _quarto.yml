@@ -1,0 +1,24 @@
+project:
+  type: website
+  output-dir: docs 
+
+website:
+  title: "Eric Quiz 2"  
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: life-gdp.qmd
+        text: Life Expectancy and GDP per Capita
+      - href: life-population.qmd
+        text: Life Expectancy and Population
+      - href: country.qmd
+        text: Country Analysis
+    right:
+      - icon: github
+        href: https://github.com/EricZou007/qtm350-quiz02.git  # Update with your GitHub repo link
+
+format:
+  html:
+    theme: cosmo  
+    toc: true      

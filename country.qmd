@@ -1,0 +1,61 @@
+---
+title: "Country Analysis"
+format:
+  html:
+    theme: cosmo  
+---
+
+# Country Analysis
+
+## Introduction
+
+This section analyzes changes in **life expectancy, GDP per capita, and population** for a selected country over time using the Gapminder dataset. The analysis provides insights into how economic growth and demographic changes influence health outcomes.
+
+## Data Analysis
+
+The following plot shows the trends in life expectancy, GDP per capita, and population for a specific country over time.
+
+::: {.cell}
+```{python}
+#| fig-cap: "the curve that show the life expectancy, GDP per capita, and population for a specific country changed over time" 
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset
+gapminder_df = pd.read_csv("gapminder.csv")
+
+# Select a specific country
+country_name = "United States"  # Change to analyze another country
+country_data = gapminder_df[gapminder_df['country'] == country_name]
+
+# Create the plot
+fig, ax1 = plt.subplots(figsize=(10, 6))
+
+# Plot life expectancy
+ax1.set_xlabel("Year")
+ax1.set_ylabel("Life Expectancy (years)", color="blue")
+ax1.plot(country_data['year'], country_data['life_expectancy'], color="blue", marker="o", label="Life Expectancy")
+ax1.tick_params(axis='y', labelcolor="blue")
+
+# Create a second y-axis for GDP per capita
+ax2 = ax1.twinx()
+ax2.set_ylabel("GDP per Capita (log scale)", color="green")
+ax2.plot(country_data['year'], country_data['gdp_per_capita'], color="green", marker="s", label="GDP per Capita")
+ax2.set_yscale("log")
+ax2.tick_params(axis='y', labelcolor="green")
+
+# Create a third y-axis for population
+ax3 = ax1.twinx()
+ax3.spines['right'].set_position(('outward', 60))
+ax3.set_ylabel("Population (millions)", color="red")
+ax3.plot(country_data['year'], country_data['population_millions'], color="red", marker="^", label="Population")
+ax3.tick_params(axis='y', labelcolor="red")
+
+# Title and layout
+plt.title(f"Trends in Life Expectancy, GDP per Capita, and Population for {country_name}")
+fig.tight_layout()
+plt.show()
+```
+:::
